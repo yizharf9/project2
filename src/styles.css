@@ -1,0 +1,51 @@
+body{
+  background-color:rgb(162, 255, 255);
+}
+h4{
+  border: solid white;
+  width: fit-content;
+  text-align: center;
+  margin: auto;
+}
+
+.detailed{
+  border: solid rgb(0, 204, 255);
+  border-radius: 5px;
+  padding: 10px;
+  background-color: rgb(44, 44, 44);
+  color: white;
+}
+
+.comp{
+  border-radius: 10px;
+  background: linear-gradient( blue,rgb(82, 82, 255));
+  width: fit-content;
+  margin:auto;
+  padding: 10px;
+}
+
+.completed{
+  padding: 10px;
+  border:solid;
+  border-color:rgb(0, 102, 0);
+  border-width:5px;
+  border-radius: 14px;
+}
+.uncompleted{
+  padding: 10px;
+  border:solid;
+  border-color:red;
+  border-width:5px;
+  border-radius: 14px;
+}
+
+.parentcomp{
+  text-align: center;
+  border: solid rgb(71, 71, 71);
+  border-radius: 10px;
+  border-width: 10px;
+
+  width: fit-content;
+  margin:auto;
+  padding: 10px;
+}

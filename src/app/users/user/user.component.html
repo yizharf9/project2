@@ -1,0 +1,52 @@
+<div
+  *ngIf="!this.User.completed"
+  [ngClass]="this.User.completed ? 'completed' : 'uncompleted'"
+>
+  <div class="comp">
+    <h4 style="color: white">{{ User._id }}</h4>
+    <br />
+    <form #f="ngForm" (ngSubmit)="form_submit(f.valid)">
+      Name :
+      <input required type="text" name="User_Name" [(ngModel)]="User.Name" />
+      <br /><br />
+
+      Email :
+      <input required type="text" name="User_Email" [(ngModel)]="User.Email" />
+      <br /><br />
+
+      <span class="detailed"  (mouseover)="detailed()">detailed</span>
+      <!-- ???optional??? <span class="detailed"  (mouseover)="detailed()">detailed</span>  -->
+
+      <br /><br />
+      <div *ngIf="mouseOverDiv">
+        Street :
+        <input
+          required
+          type="text"
+          name="User_Street"
+          [(ngModel)]="User.Street"
+        />
+        <br /><br />
+
+        City :
+        <input required type="text" name="User_City" [(ngModel)]="User.City" />
+        <br /><br />
+
+        Zipcode :
+        <input
+          required
+          type="text"
+          name="User_Zipcode"
+          [(ngModel)]="User.Zipcode"
+        />
+        <br /><br />
+      </div>
+
+      <input type="submit" value="update!" [disabled]="!f.valid" />
+      <br /><br />
+
+      <input type="button" value="delete!" (click)="Delete()" />
+    </form>
+  </div>
+</div>
+<br />

@@ -1,0 +1,6 @@
+<h1>users works!</h1>
+<div class="parentcomp">
+  search : <input #search_inp type="text" (keyup)="search(search_inp.value)">
+  <br><br>
+  <app-user [User]="user" *ngFor="let user of filteredUsers"></app-user>
+</div>
