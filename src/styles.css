@@ -1,14 +1,4 @@
-body{
-  background-color:rgb(162, 255, 255);
-}
-h4{
-  border: solid white;
-  width: fit-content;
-  text-align: center;
-  margin: auto;
-}
-
-.detailed{
+.detailed {
   border: solid rgb(0, 204, 255);
   border-radius: 5px;
   padding: 10px;
@@ -16,36 +6,85 @@ h4{
   color: white;
 }
 
-.comp{
+.routed {
+  position: relative;
+  margin: 8px;
+  border: solid red;
+  border-width: 5px;
+  border-radius: 5px;
+}
+
+.outlet {
+  position: fixed;
+  left: 50%;
+  border: solid red;
+  border-width: 5px;
+  border-radius: 5px;
+  width: 400px;
+}
+
+.comp {
   border-radius: 10px;
-  background: linear-gradient( blue,rgb(82, 82, 255));
+  background: linear-gradient(blue, rgb(82, 82, 255));
   width: fit-content;
-  margin:auto;
+  margin: auto;
   padding: 10px;
 }
 
-.completed{
+.completed {
   padding: 10px;
-  border:solid;
-  border-color:rgb(0, 102, 0);
-  border-width:5px;
-  border-radius: 14px;
-}
-.uncompleted{
-  padding: 10px;
-  border:solid;
-  border-color:red;
-  border-width:5px;
+  border: solid;
+  border-color: rgb(0, 102, 0);
+  border-width: 5px;
   border-radius: 14px;
 }
 
-.parentcomp{
+.uncompleted {
+  padding: 10px;
+  border: solid;
+  border-color: red;
+  border-width: 5px;
+  border-radius: 14px;
+}
+
+.parentcomp {
   text-align: center;
   border: solid rgb(71, 71, 71);
   border-radius: 10px;
   border-width: 10px;
-
+  position: absolute;
+  left: 10%;
   width: fit-content;
-  margin:auto;
+  margin: auto;
   padding: 10px;
 }
+
+body {
+  background-color: rgb(0, 40, 116);
+  /* background: linear-gradient(to bottom, rgb(71, 71, 255),rgb(41, 179, 179) ); */
+}
+
+span{
+  color:white;
+}
+
+  h1 {
+    text-align: center;
+    color: white;
+}
+
+  h2 {
+    text-align: center;
+    color: white;
+  }
+
+  h4 {
+    color: white;
+    border: solid white;
+    padding: 10px;
+    border-radius: 5px;
+
+    width: fit-content;
+    text-align: center;
+    margin: auto;
+  }

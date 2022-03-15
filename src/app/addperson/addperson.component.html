@@ -1,0 +1,16 @@
+<h2>addperson works!</h2>
+<div style="margin-left: 100px;">
+  <form #f="ngForm" (ngSubmit)="form_submit(f.valid)">
+    <br />
+    <span>Full Name : </span>
+    <input autocomplete="off" #Name name="Name" [(ngModel)]="User_submit.Name" type="text" required/>
+    <br /><br>
+    <span>Email : </span>
+    <input autocomplete="off" #Email name="Email" [(ngModel)]="User_submit.Email" type="text" required/>
+    <br /><br>
+    <div>
+      <input type="submit" value="add person!" [disabled]="!f.valid">
+    </div>
+    <br><br>
+  </form>
+</div>

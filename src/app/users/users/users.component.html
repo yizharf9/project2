@@ -1,6 +1,22 @@
-<h1>users works!</h1>
+<h1 style="text-align: center">Welcome to users page!</h1>
 <div class="parentcomp">
-  search : <input #search_inp type="text" (keyup)="search(search_inp.value)">
+  <h4>search :</h4><br>
+  <input #search_inp type="text" (keyup)="search(search_inp.value)" />
+  <br /><br />
+  <input type="button" value="add new person!" (click)="addPerson()" />
+  <br>
+  <span *ngFor="let task of selected_User?.Tasks">
+    {{task}}
+    <br>
+  </span>
+  <br /><br />
+  <app-user [User]="user" *ngFor="let user of filteredUsers" (User_emit)="recieveUser($event)"></app-user>
   <br><br>
-  <app-user [User]="user" *ngFor="let user of filteredUsers"></app-user>
+
+  <!--  -->
+  <!--  -->
+</div>
+
+<div class="outlet">
+  <router-outlet ></router-outlet>
 </div>

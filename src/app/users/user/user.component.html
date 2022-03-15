@@ -3,7 +3,12 @@
   [ngClass]="this.User.completed ? 'completed' : 'uncompleted'"
 >
   <div class="comp">
-    <h4 style="color: white">{{ User._id }}</h4>
+    <h4
+      style="padding: 5px; background-color: black; color: white"
+      (click)="tasks_posts(User._id)"
+    >
+      {{ User._id }}
+    </h4>
     <br />
     <form #f="ngForm" (ngSubmit)="form_submit(f.valid)">
       Name :
@@ -14,14 +19,22 @@
       <input required type="text" name="User_Email" [(ngModel)]="User.Email" />
       <br /><br />
 
-      <span class="detailed"  (mouseover)="detailed()">detailed</span>
+      <!-- <span class="detailed"  (click)="detailed()">detailed</span> -->
+      <input
+        type="button"
+        value="detailed..."
+        class="detailed"
+        (click)="detailed()"
+      />
+
       <!-- ???optional??? <span class="detailed"  (mouseover)="detailed()">detailed</span>  -->
 
       <br /><br />
-      <div *ngIf="mouseOverDiv">
+      <div *ngIf="_detailed">
         Street :
         <input
           required
+          placeholder="required..."
           type="text"
           name="User_Street"
           [(ngModel)]="User.Street"
@@ -29,12 +42,21 @@
         <br /><br />
 
         City :
-        <input required type="text" name="User_City" [(ngModel)]="User.City" />
+        <input
+          required
+          placeholder="required..."
+          type="text"
+          name="User_City"
+          [(ngModel)]="User.City"
+        />
         <br /><br />
 
         Zipcode :
         <input
           required
+          placeholder="required..."
+          minlength="5"
+          maxlength="5"
           type="text"
           name="User_Zipcode"
           [(ngModel)]="User.Zipcode"

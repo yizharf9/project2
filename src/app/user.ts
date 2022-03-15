@@ -11,6 +11,6 @@ export class User {
     public Zipcode: Number,
     public Tasks: Task[],
     public Posts: Post[],
-    public completed: boolean = true
+    public completed: boolean = false
   ) {}
 }
