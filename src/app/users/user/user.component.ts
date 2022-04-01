@@ -13,13 +13,15 @@ import { UtilsService } from 'src/app/utils.service';
 export class UserComponent implements OnInit {
   sub: Subscription = new Subscription();
   sub2: Subscription = new Subscription();
+  sub3: Subscription = new Subscription();
+  sub4: Subscription = new Subscription();
 
   _detailed: boolean = false;
 
   ID: String = '';
 
   @Output()
-  User_emit: EventEmitter<User> = new EventEmitter();
+  dataRequest: EventEmitter<any> = new EventEmitter<any>();
 
   @Input()
   User: User = {
@@ -29,8 +31,6 @@ export class UserComponent implements OnInit {
     Street: '',
     City: '',
     Zipcode: 0,
-    Tasks: [],
-    Posts: [],
     completed: false,
   };
 
@@ -38,10 +38,21 @@ export class UserComponent implements OnInit {
     private utils: UtilsService,
     private router: Router,
     private ar: ActivatedRoute
-  ) {}
+  ) {
+    
+  }
 
-  emitUser(){
-    this.User_emit.emit(this.User);
+  reloadCurrentRoute() {
+    let currentUrl = this.router.url;
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate([currentUrl]);
+      console.log(currentUrl);
+    });
+  }
+
+  requestData() {
+    this.dataRequest.emit(this.User._id);
+    console.log('data is emitted!');
   }
 
   //#region - router outlet
@@ -50,12 +61,9 @@ export class UserComponent implements OnInit {
   }
 
   tasks_posts(id: String) {
-    this.emitUser();
-
     this.router.navigate(['task-post', id]);
   }
   //#endregion
-
 
   //#region - requests from server
   form_submit(valid: boolean | null) {
@@ -64,21 +72,37 @@ export class UserComponent implements OnInit {
       .subscribe((data) => {
         alert(data);
       });
-    this.router.navigate(['add']);
+    this.reloadCurrentRoute();
   }
 
   Delete() {
     if (confirm(`are you sure you want to delete \n ${this.User.Name} ?`)) {
-      this.sub2 = this.utils.delUser(this.User._id).subscribe((data: any) => {
-        alert(data);
-        window.location.reload();
+      this.sub2 = this.utils.delUser(this.User._id).subscribe((status: any) => {
+
+        alert(status);                //deleting user - status
+
+        this.sub3 = this.utils        //deleting posts
+          .delUserPosts(this.User._id)
+          .subscribe((status) => {
+            alert(status);
+          });
+
+        this.sub3 = this.utils        //deleting tasks
+          .delUserTasks(this.User._id)
+          .subscribe((status) => {
+            alert(status);
+          });
       });
+      this.reloadCurrentRoute();
     }
+  }
+
+  completedTasks(){
+
   }
   //#endregion
 
-
-// #region - Init,Destroy
+  // #region - Init,Destroy
   ngOnInit(): void {
     this.sub = this.ar.params.subscribe((UserID) => {
       this.ID = UserID['id'];
@@ -89,5 +113,5 @@ export class UserComponent implements OnInit {
     this.sub.unsubscribe();
     this.sub2.unsubscribe();
   }
+  // #endregion
 }
-// #endregion

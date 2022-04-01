@@ -11,11 +11,11 @@ import { UtilsService } from 'src/app/utils.service';
 })
 export class UsersComponent implements OnInit {
   sub: Subscription = new Subscription();
-
-  selected_User: User | undefined;
-
   Users: User[] = [];
   filteredUsers: User[] = [];
+  selected_User: User | undefined;
+
+  eventData : any
 
   constructor(private utils: UtilsService, private router: Router) {}
 
@@ -25,11 +25,6 @@ export class UsersComponent implements OnInit {
         x.Name.toLowerCase().includes(value.toLowerCase()) ||
         x.Email.toLowerCase().includes(value.toLowerCase())
     );
-  }
-
-  recieveUser(user: any) {
-    this.selected_User = user
-    console.log(user)
   }
 
   addPerson() {

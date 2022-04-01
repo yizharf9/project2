@@ -1,5 +1,4 @@
 import { Post } from './post';
-import { Task } from './task';
 
 export class User {
   constructor(
@@ -9,8 +8,6 @@ export class User {
     public Street: String,
     public City: String,
     public Zipcode: Number,
-    public Tasks: Task[],
-    public Posts: Post[],
     public completed: boolean = false
   ) {}
 }

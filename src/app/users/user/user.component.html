@@ -1,5 +1,5 @@
 <div
-  *ngIf="!this.User.completed"
+
   [ngClass]="this.User.completed ? 'completed' : 'uncompleted'"
 >
   <div class="comp">
@@ -11,6 +11,7 @@
     </h4>
     <br />
     <form #f="ngForm" (ngSubmit)="form_submit(f.valid)">
+
       Name :
       <input required type="text" name="User_Name" [(ngModel)]="User.Name" />
       <br /><br />
@@ -19,15 +20,12 @@
       <input required type="text" name="User_Email" [(ngModel)]="User.Email" />
       <br /><br />
 
-      <!-- <span class="detailed"  (click)="detailed()">detailed</span> -->
       <input
         type="button"
         value="detailed..."
         class="detailed"
         (click)="detailed()"
       />
-
-      <!-- ???optional??? <span class="detailed"  (mouseover)="detailed()">detailed</span>  -->
 
       <br /><br />
       <div *ngIf="_detailed">

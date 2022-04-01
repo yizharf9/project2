@@ -15,7 +15,9 @@
 }
 
 .outlet {
-  position: fixed;
+  display: flexbox;
+
+  position: absolute;
   left: 50%;
   border: solid red;
   border-width: 5px;
@@ -54,7 +56,7 @@
   border-width: 10px;
   position: absolute;
   left: 10%;
-  width: fit-content;
+  width: 274px;
   margin: auto;
   padding: 10px;
 }

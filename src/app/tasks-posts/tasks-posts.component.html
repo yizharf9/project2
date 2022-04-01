@@ -1,8 +1,9 @@
-<div style="text-align: center;">
+<div style="text-align: center">
   <h2>user-detailed</h2>
+  <br>
   <h4>User :{{ ID }}</h4>
   <br />
-  <app-tasks></app-tasks>
+  <app-tasks [ID]="ID" [Tasks]="Tasks"></app-tasks>
   <br />
-  <app-posts></app-posts>
+  <app-posts [ID]="ID" [Posts]="Posts"></app-posts>
 </div>

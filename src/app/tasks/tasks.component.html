@@ -1,3 +1,44 @@
-<div class="routed">
-  <h3>tasks works!</h3>
+<h4><input type="button" value="new " (click)="Adding = !Adding" /> tasks</h4>
+<br />
+<form #f="ngForm" (ngSubmit)="AddTask()" *ngIf="Adding">
+  <input
+    [(ngModel)]="addedTask.Title"
+    name="Title"
+    type="text"
+    placeholder="Title"
+    required
+  /><input type="submit" value="add" [disabled]="!f.valid" />
+  <br />
+  <span>Status : </span>
+  <input [(ngModel)]="addedTask.Status" type="checkbox" name="Status" />
+  <br />
+  <span *ngIf="!f.valid && f.dirty" style="color: red"
+    >must fill all required fields!</span
+  >
+</form>
+<div
+  style="border: solid; border-color: white; margin: 10px; border-radius: 5px"
+>
+  <ul>
+    <div
+      *ngFor="let task of Tasks; let i = index"
+      style="text-align: left; color: white"
+    >
+      <li>
+        Title : <span style="color: rgb(255, 4 1, 41)">{{ task.Title }} </span
+        ><br />
+        Status : {{ task.Status ? "completed" : "uncompleted" }}
+        &nbsp;
+        <input type="button" value="delete" (click)="deleteTask(task._id)" />
+        &nbsp;&nbsp;&nbsp;
+        <input
+          *ngIf="!task.Status"
+          type="button"
+          value="mark completed"
+          (click)="markCompleted(task._id, task)"
+        />
+        <br /><br /><br />
+      </li>
+    </div>
+  </ul>
 </div>

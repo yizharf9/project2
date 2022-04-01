@@ -1,3 +1,8 @@
 export class Task {
-  constructor(private _id: String, Title: String, Status: boolean) {}
+  constructor(
+    public _id: String,
+    public Title: String,
+    public Status: boolean,
+    public user_id: String,
+  ) {}
 }

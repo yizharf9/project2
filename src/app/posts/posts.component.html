@@ -1,3 +1,48 @@
-<div class="routed">
-  <h3>posts works!</h3>
+<h4><input type="button" value="new " (click)="Adding = !Adding" /> Posts</h4>
+<br />
+<form #f="ngForm" (ngSubmit)="AddPost(Body.value)" *ngIf="Adding">
+  <input
+    [(ngModel)]="addedPost.Title"
+    name="Title"
+    type="text"
+    placeholder="Title"
+    required
+  /><input type="submit" value="add" [disabled]="!f.valid" /> <br /><br />
+  <span>Body : </span>
+  <br />
+  <textarea
+    #Body
+    style="white-space: pre-line;"
+    [(ngModel)]="addedPost.Body"
+    type="textarea"
+    name="Status"
+  ></textarea>
+  <br />
+  <span *ngIf="!f.valid && f.dirty" style="color: red"
+    >must fill all required fields!</span
+  >
+</form>
+<div
+  style="border: solid; border-color: white; margin: 10px; border-radius: 5px"
+>
+  <ul>
+    <div
+      *ngFor="let Post of Posts; let i = index"
+      style="text-align: left; color: white"
+    >
+      <li>
+        Title : <span style="color: rgb(255, 41, 41)"> {{ Post.Title }} </span
+        ><br />
+        Body : {{ Post.Body }} <br />
+        <div>
+          <input
+            type="button"
+            value="delete"
+            (click)="deletePost(Post._id)"
+          /><br />
+        </div>
+        <br /><br />
+      </li>
+    </div>
+  </ul>
 </div>
