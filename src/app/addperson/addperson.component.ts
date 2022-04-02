@@ -31,7 +31,8 @@ export class AddpersonComponent implements OnInit {
       console.log(status);
     });
     this.User_submit = {};
-    this.reloadCurrentRoute();
+    window.location.reload()
+    // this.reloadCurrentRoute();
   }
 
   ngOnInit(): void {}

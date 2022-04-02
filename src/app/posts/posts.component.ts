@@ -39,16 +39,18 @@ export class PostsComponent implements OnInit {
     this.sub = this.utils.addPost(this.addedPost).subscribe((status) => {
       alert(status);
       this.router.navigate(['Post-post/' + this.ID]);
+      this.addedPost = {};
+      window.location.reload();
     });
-    this.addedPost = {};
-    this.reloadCurrentRoute()
+    // this.reloadCurrentRoute()
   }
 
   deletePost(id: String) {
     this.sub3 = this.utils.delPost(id).subscribe((status) => {
       alert(status);
+      window.location.reload();
     });
-    this.reloadCurrentRoute()
+    this.reloadCurrentRoute();
   }
 
   ngOnInit(): void {}

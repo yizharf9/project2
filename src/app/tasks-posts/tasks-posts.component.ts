@@ -40,14 +40,6 @@ export class TasksPostsComponent implements OnInit {
     });
   }
 
-  reloadUsers() {
-    let currentUrl = this.router.url;
-    this.router.navigateByUrl('', { skipLocationChange: true }).then(() => {
-      this.router.navigate([currentUrl]);
-      console.log(currentUrl);
-    });
-  }
-
   ngOnInit(): void {
     this.sub = this.ar.params.subscribe((UserID) => {
       this.ID = UserID['id'];

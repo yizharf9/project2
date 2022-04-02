@@ -39,7 +39,7 @@ export class UserComponent implements OnInit {
     private router: Router,
     private ar: ActivatedRoute
   ) {
-    
+
   }
 
   reloadCurrentRoute() {
@@ -71,6 +71,7 @@ export class UserComponent implements OnInit {
       .uptUser(this.User._id, this.User)
       .subscribe((data) => {
         alert(data);
+        window.location.reload()
       });
     this.reloadCurrentRoute();
   }
@@ -91,6 +92,7 @@ export class UserComponent implements OnInit {
           .delUserTasks(this.User._id)
           .subscribe((status) => {
             alert(status);
+            window.location.reload()
           });
       });
       this.reloadCurrentRoute();

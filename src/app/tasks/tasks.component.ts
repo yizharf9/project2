@@ -36,14 +36,22 @@ export class TasksComponent implements OnInit {
     });
   }
 
+  reloadUsers() {
+    let currentUrl = this.router.url;
+    this.router.navigateByUrl('', { skipLocationChange: false }).then(() => {
+      this.router.navigate([""]);
+      console.log(currentUrl);
+    });
+  }
+
   AddTask() {
     this.addedTask.user_id = this.ID;
     this.sub = this.utils.addTask(this.addedTask).subscribe((status) => {
       alert(status);
-      this.router.navigate(['task-post/' + this.ID]);
+      this.addedTask = {};
+      this.reloadUsers()
+      // window.location.reload();
     });
-    this.addedTask = {};
-    this.reloadCurrentRoute();
   }
 
   deleteTask(id: String) {
@@ -57,9 +65,10 @@ export class TasksComponent implements OnInit {
     uptTask.Status = true;
     this.utils.uptTask(id, uptTask).subscribe((status) => {
       console.log(status);
+      window.location.reload();
     });
-    
-    this.reloadCurrentRoute();
+
+    // this.reloadCurrentRoute();
   }
 
   ngOnInit(): void {}
