@@ -32,13 +32,6 @@ export class TasksPostsComponent implements OnInit {
     private router: Router
   ) {}
 
-  reloadCurrentRoute() {
-    let currentUrl = this.router.url;
-    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-      this.router.navigate([currentUrl]);
-      console.log(currentUrl);
-    });
-  }
 
   ngOnInit(): void {
     this.sub = this.ar.params.subscribe((UserID) => {
